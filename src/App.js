@@ -6,15 +6,33 @@ import "./App.css";
 
 const storeItems = [
   {
-    name: "Çikolata Sosu",
+    name: "Fotoğraf Makinası",
+    src: "camera",
     price: 20,
   },
   {
-    name: "Çikolata Kabı",
+    name: "Kulaklık",
+    src: "headphone",
     price: 10,
   },
   {
-    name: "Çikolata",
+    name: "Oyun Konsolu",
+    src: "joystick",
+    price: 25,
+  },
+  {
+    name: "Retro Fotoğraf Makinası",
+    src: "retro-cam",
+    price: 25,
+  },
+  {
+    name: "Oyuncak Araba",
+    src: "toy-car",
+    price: 25,
+  },
+  {
+    name: "Kol Saati",
+    src: "watch",
     price: 25,
   },
 ];
@@ -28,11 +46,12 @@ function App() {
   return (
     <Container>
       <SimpleGrid cols={3} className="Store">
-        {storeItems.map(({ name }) => {
+        {storeItems.map(({ name, src }) => {
           return (
             <Card
               key={name}
               name={name}
+              src={src}
               onAdd={() => setBasketItems([...basketItems, { name }])}
             />
           );
