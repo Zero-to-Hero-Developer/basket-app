@@ -54,6 +54,8 @@ const storeItems = [
   },
 ];
 
+let totalBasketItems = 0;
+  
 function App() {
   let [opened, setOpened] = useState(false);
   let [basketItems, setBasketItems] = useState([]);
@@ -63,6 +65,7 @@ function App() {
   );
   let addToBasket = ({ id, name }) => {
     let basketIndex = basketItems.findIndex((item) => item.id === id);
+    totalBasketItems++
     if (basketIndex >= 0) {
       let _basketItems = [...basketItems];
       _basketItems[basketIndex].count += 1;
@@ -81,7 +84,7 @@ function App() {
           />
         </Input.Wrapper>
         <Button onClick={() => setSearchValue("")}>Temizle</Button>
-        <Indicator color="red" label={basketItems.length} size={22}>
+        <Indicator color="red" label={totalBasketItems !== 0 ? totalBasketItems : null} size={22}>
           <Button onClick={() => setOpened(true)}>
             <IconBasket size={22} />
           </Button>
